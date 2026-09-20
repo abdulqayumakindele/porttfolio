@@ -1,0 +1,133 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { projects } from '../data/content.js';
+
+const featured = projects.find(p => p.featured);
+const others   = projects.filter(p => !p.featured);
+---
+<Layout title="Projects | Abdul Qayum Akindele">
+<Header/>
+<main id="main-content">
+
+  <div class="wrap page-header">
+    <span class="tag" aria-hidden="true">Portfolio</span>
+    <h1 class="page-title" style="margin-top:12px;">Projects</h1>
+    <p class="page-subtitle">
+      A collection of projects I've built, developed, researched, and contributed to across technology and cybersecurity.
+    </p>
+  </div>
+
+  <section class="section" aria-labelledby="projects-section-heading">
+    <h2 class="sr-only" id="projects-section-heading">All Projects</h2>
+    <div class="wrap">
+
+      <!-- FILTER BAR -->
+      <div class="filter-bar" role="group" aria-label="Filter projects by category">
+        {['all','technology','cybersecurity','development','volunteer'].map((f, i) => (
+          <button
+            class={`filter-btn${i === 0 ? ' active' : ''}`}
+            data-filter={f}
+            aria-pressed={i === 0 ? 'true' : 'false'}
+          >
+            {f === 'all' ? 'All' : f.charAt(0).toUpperCase() + f.slice(1)}
+          </button>
+        ))}
+      </div>
+
+      <!-- OFF_LIMIT TECH — FLAGSHIP (always first, from content.js) -->
+      {featured && (
+        <div class="featured-card" style="margin-bottom:24px;" data-category={featured.category}>
+          <div class="featured-badge" aria-hidden="true">★ Featured — Flagship Project</div>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px;">
+            <div>
+              <span class="tag" aria-hidden="true">Technology · Cybersecurity · Education</span>
+              <h2 style="font-size:clamp(1.6rem,3vw,2.4rem);font-weight:900;margin:10px 0 8px;letter-spacing:.02em;">
+                {featured.name}
+              </h2>
+              <p style="color:#9ca3b1;font-size:.85rem;margin-bottom:12px;">
+                {featured.role} &nbsp;|&nbsp; {featured.status}
+              </p>
+              <p style="max-width:580px;color:#c8ccd5;margin-bottom:24px;line-height:1.65;font-size:.98rem;">
+                {featured.description}
+              </p>
+              <a
+                class="btn primary"
+                href={featured.url}
+                target={featured.external ? '_blank' : '_self'}
+                rel={featured.external ? 'noopener noreferrer' : undefined}
+              >
+                Visit OFF_LIMIT TECH ↗
+                {featured.external && <span class="sr-only"> (opens in new tab)</span>}
+              </a>
+            </div>
+            <span class="status in-progress">{featured.status}</span>
+          </div>
+        </div>
+      )}
+
+      <!-- OTHER PROJECTS -->
+      {others.length > 0 && (
+        <ul id="projects-grid" class="grid-3" role="list" style="padding:0;list-style:none;margin-top:8px;">
+          {others.map(project => (
+            <li>
+              <article class="card" data-category={project.category}>
+                <span class="tag">{project.category.charAt(0).toUpperCase() + project.category.slice(1)}</span>
+                <h3 style="margin-top:10px;">{project.name}</h3>
+                <p class="muted" style="font-size:.9rem;margin:8px 0;">{project.description}</p>
+                <p style="font-size:.82rem;color:#656d7c;">Role: {project.role}</p>
+                <div class="card-meta">
+                  <span class={`status ${project.status === 'Completed' ? 'completed' : project.status === 'In Progress' ? 'in-progress' : 'coming-soon'}`}>
+                    {project.status}
+                  </span>
+                  <a
+                    class="card-link"
+                    href={project.url}
+                    target={project.external ? '_blank' : '_self'}
+                    rel={project.external ? 'noopener noreferrer' : undefined}
+                  >
+                    View Project →{project.external && <span class="sr-only"> (opens in new tab)</span>}
+                  </a>
+                </div>
+              </article>
+            </li>
+          ))}
+        </ul>
+      )}
+
+      <!-- Placeholder — shows when no additional projects yet -->
+      {others.length === 0 && (
+        <div style="border:1px dashed rgba(255,255,255,.12);border-radius:10px;padding:40px 24px;color:#656d7c;font-size:.9rem;text-align:center;margin-top:8px;" role="status">
+          <div style="font-size:1.5rem;margin-bottom:10px;" aria-hidden="true">🔧</div>
+          More projects will be added here as they are built and developed.
+        </div>
+      )}
+
+    </div>
+  </section>
+
+</main>
+<Footer/>
+</Layout>
+
+<script>
+  const filterBtns = document.querySelectorAll('.filter-btn[data-filter]');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
+
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('[data-category]').forEach(card => {
+        const show = filter === 'all' || card.dataset.category.includes(filter);
+        card.style.display = show ? '' : 'none';
+      });
+    });
+  });
+</script>

@@ -1,0 +1,144 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { writings } from '../data/content.js';
+
+const technical = writings.filter(w => w.type === 'Technical Writing');
+const personal = writings.filter(w => w.type === 'Personal Writing');
+---
+<Layout title="Writing | Abdul Qayum Akindele">
+<Header/>
+<main id="main-content">
+
+  <div class="wrap page-header">
+    <span class="tag" aria-hidden="true">Writing</span>
+    <h1 class="page-title" style="margin-top:12px;">Writing</h1>
+    <p class="page-subtitle">Ideas, explanations, and lessons I've documented through my journey in technology and life.</p>
+  </div>
+
+  <section class="section" aria-labelledby="writing-tabs-label">
+    <div class="wrap">
+      <h2 class="sr-only" id="writing-tabs-label">Writing collection</h2>
+
+      <!-- TABS -->
+      <div class="tab-bar" role="tablist" aria-label="Writing categories">
+        <button class="tab-btn active" role="tab" data-tab="all" aria-selected="true" id="tab-btn-all" aria-controls="tab-all">All</button>
+        <button class="tab-btn" role="tab" data-tab="technical" aria-selected="false" id="tab-btn-technical" aria-controls="tab-technical">Technical Writing</button>
+        <button class="tab-btn" role="tab" data-tab="personal" aria-selected="false" id="tab-btn-personal" aria-controls="tab-personal">Articles / Personal Writing</button>
+      </div>
+
+      <!-- ALL WRITING (default) -->
+      <div id="tab-all">
+
+        <!-- Featured Technical Work -->
+        <div style="margin-bottom:40px;">
+          <p class="muted" style="font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600;margin-bottom:18px;">Featured Technical Work</p>
+          {technical.filter(w => w.status === 'Published').map(w => (
+            <div class="featured-card" style="margin-bottom:18px;">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px;">
+                <div style="flex:1;">
+                  <span class="tag">{w.type}</span>
+                  <h3 style="font-size:1.3rem;margin:10px 0 8px;font-weight:700;">{w.title}</h3>
+                  <p style="color:#9ca3b1;font-size:.85rem;margin-bottom:12px;">{w.platform}</p>
+                  <p style="color:#c8ccd5;max-width:580px;line-height:1.65;font-size:.97rem;margin-bottom:20px;">{w.description}</p>
+                  <a class="btn primary" href={w.url} target="_blank" rel="noopener noreferrer">Read Article →</a>
+                </div>
+                <span class="status completed">Published</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- Technical Writing Collection -->
+        <p class="muted" style="font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600;margin-bottom:18px;">All Writing</p>
+        <div class="grid-3">
+          {writings.map(w => (
+            <article class="card" data-type={w.type}>
+              <span class="tag">{w.type}</span>
+              <h3 style="margin-top:10px;font-size:1rem;">{w.title}</h3>
+              <p class="muted" style="font-size:.88rem;margin:8px 0;">{w.description}</p>
+              {w.date && <p style="font-size:.8rem;color:#656d7c;margin-bottom:4px;">{w.date}</p>}
+              <div class="card-meta">
+                <span class="card-date">{w.platform}</span>
+                {w.status === 'Coming Soon'
+                  ? <span class="status coming-soon">Coming Soon — {w.date}</span>
+                  : <a class="card-link" href={w.url} target="_blank" rel="noopener noreferrer">Read Article →</a>
+                }
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <!-- TECHNICAL WRITING TAB -->
+      <div id="tab-technical" style="display:none;">
+        <p style="color:#c8ccd5;max-width:620px;line-height:1.7;margin-bottom:36px;">
+          Technical writing demonstrates my ability to research technical subjects, understand them thoroughly,
+          structure information clearly, and communicate complex ideas in accessible ways.
+        </p>
+        <div class="grid-3">
+          {technical.map(w => (
+            <article class="card">
+              <span class="tag">{w.type}</span>
+              <h3 style="margin-top:10px;font-size:1rem;">{w.title}</h3>
+              <p class="muted" style="font-size:.88rem;margin:8px 0;">{w.description}</p>
+              <div class="card-meta">
+                <span class="card-date">{w.platform}</span>
+                {w.status === 'Coming Soon'
+                  ? <span class="status coming-soon">Coming Soon</span>
+                  : <a class="card-link" href={w.url} target="_blank" rel="noopener noreferrer">Read Article →</a>
+                }
+              </div>
+            </article>
+          ))}
+        </div>
+        <div style="margin-top:28px;padding:20px 24px;border:1px dashed rgba(255,255,255,.12);border-radius:10px;color:#656d7c;font-size:.9rem;">
+          More technical writing will be added here — covering cybersecurity, networking, AI, and related technology topics.
+        </div>
+      </div>
+
+      <!-- PERSONAL WRITING TAB -->
+      <div id="tab-personal" style="display:none;">
+        <p style="color:#c8ccd5;max-width:620px;line-height:1.7;margin-bottom:36px;">
+          Personal writing — reflections, experiences, lessons, and documentation of my journey in technology and life.
+        </p>
+        <div class="grid-3">
+          {personal.map(w => (
+            <article class="card">
+              <span class="tag">{w.type}</span>
+              <h3 style="margin-top:10px;font-size:1rem;">{w.title}</h3>
+              <p class="muted" style="font-size:.88rem;margin:8px 0;">{w.description}</p>
+              {w.date && <p style="font-size:.8rem;color:#656d7c;margin-bottom:4px;">{w.date}</p>}
+              <div class="card-meta">
+                <span class="card-date">{w.platform}</span>
+                {w.status === 'Coming Soon'
+                  ? <span class="status coming-soon">Coming Soon — {w.date}</span>
+                  : <a class="card-link" href={w.url} target="_blank" rel="noopener noreferrer">Read Article →</a>
+                }
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+<Footer/>
+</Layout>
+
+<script>
+  const tabs = document.querySelectorAll('.tab-btn');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected','true');
+      document.querySelectorAll('[id^="tab-"]').forEach(panel => panel.style.display = 'none');
+      const target = document.getElementById('tab-' + tab.dataset.tab);
+      if (target) target.style.display = '';
+    });
+  });
+</script>

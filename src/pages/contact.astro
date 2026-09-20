@@ -1,0 +1,146 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site, personalSocial, personalContactPurpose } from '../data/content.js';
+---
+<Layout title="Contact | Abdul Qayum Akindele">
+<Header/>
+<main id="main-content">
+
+  <div class="wrap page-header">
+    <span class="tag" aria-hidden="true">Get in Touch</span>
+    <h1 class="page-title" style="margin-top:12px;">Let's Connect</h1>
+    <p class="page-subtitle">
+      Have an opportunity, collaboration idea, or simply want to connect?
+      I'd be glad to hear from you.
+    </p>
+  </div>
+
+  <section class="section" aria-labelledby="contact-section-heading">
+    <h2 class="sr-only" id="contact-section-heading">Contact and Social Profiles</h2>
+    <div class="wrap contact-grid">
+
+      <!-- LEFT — CONTACT FORM -->
+      <div>
+        <span class="tag" aria-hidden="true">Send a Message</span>
+        <h3 class="section-title" style="margin-top:12px;margin-bottom:24px;">Contact Me</h3>
+
+        <form
+          action={`mailto:${site.email}`}
+          method="get"
+          enctype="text/plain"
+          aria-label="Personal contact form"
+        >
+          <div class="form-group">
+            <label for="contact-name">Name</label>
+            <input
+              type="text"
+              id="contact-name"
+              name="name"
+              placeholder="Your name"
+              required
+              autocomplete="name"
+            />
+          </div>
+          <div class="form-group">
+            <label for="contact-email">Email</label>
+            <input
+              type="email"
+              id="contact-email"
+              name="email"
+              placeholder="your@email.com"
+              required
+              autocomplete="email"
+            />
+          </div>
+          <div class="form-group">
+            <label for="contact-message">Message</label>
+            <textarea
+              id="contact-message"
+              name="body"
+              placeholder="Your message..."
+              required
+            ></textarea>
+          </div>
+          <button type="submit" class="btn primary" style="width:100%;justify-content:center;">
+            Send Message
+          </button>
+        </form>
+
+        <p style="margin-top:16px;font-size:.85rem;color:#656d7c;">
+          Or email directly:
+          <a href={`mailto:${site.email}`} style="color:#65a8ff;">{site.email}</a>
+        </p>
+
+        <!-- PURPOSE NOTE -->
+        <div
+          style="margin-top:28px;padding:18px;border:1px solid rgba(255,255,255,.08);border-radius:10px;background:rgba(255,255,255,.02);"
+          aria-label="What this contact is for"
+        >
+          <p style="font-size:.82rem;text-transform:uppercase;letter-spacing:.06em;color:#9ca3b1;font-weight:600;margin-bottom:10px;">
+            This contact is for
+          </p>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+            {personalContactPurpose.map(item => (
+              <li style="display:flex;align-items:center;gap:10px;font-size:.9rem;color:#c8ccd5;">
+                <span style="color:#267fff;" aria-hidden="true">→</span> {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <!-- RIGHT — SOCIAL LINKS -->
+      <div>
+        <span class="tag" aria-hidden="true">Find Me Online</span>
+        <h3 class="section-title" style="margin-top:12px;margin-bottom:24px;">Social Profiles</h3>
+        <nav class="social-links-list" aria-label="Personal social media profiles">
+          {personalSocial.map(s => (
+            <a
+              href={s.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-link-item"
+            >
+              <span style="font-size:1.3rem;" aria-hidden="true">{s.icon}</span>
+              <div>
+                <p class="social-name">{s.name}</p>
+                <p class="social-handle">{s.handle}</p>
+              </div>
+              <span style="margin-left:auto;color:#9ca3b1;font-size:.85rem;" aria-hidden="true">↗</span>
+              <span class="sr-only"> (opens in new tab)</span>
+            </a>
+          ))}
+        </nav>
+
+        <!-- OLT POINTER — separate contact -->
+        <div
+          style="margin-top:32px;padding:22px;border:1px solid rgba(22,113,255,.25);border-radius:12px;background:rgba(22,113,255,.05);"
+          role="note"
+          aria-label="OFF_LIMIT TECH contact information"
+        >
+          <p style="font-size:.82rem;text-transform:uppercase;letter-spacing:.06em;color:#65a8ff;font-weight:600;margin-bottom:10px;">
+            OFF_LIMIT TECH
+          </p>
+          <p style="font-size:.9rem;color:#c8ccd5;line-height:1.6;">
+            For collaboration, sponsorships, partnerships, or brand inquiries related to OFF_LIMIT TECH,
+            please use the OFF_LIMIT TECH contact instead.
+          </p>
+          <a
+            href="/off-limit-tech"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="display:inline-block;margin-top:12px;color:#65a8ff;font-size:.9rem;"
+          >
+            Visit OFF_LIMIT TECH ↗<span class="sr-only"> (opens in new tab)</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+<Footer/>
+</Layout>

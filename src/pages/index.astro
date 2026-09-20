@@ -1,0 +1,172 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site, focus, building, writings, quote } from '../data/content.js';
+---
+<Layout title="Abdul Qayum Akindele | Portfolio">
+<Header/>
+<main id="main-content">
+
+  <!-- 1. HERO -->
+  <section class="hero wrap" aria-labelledby="hero-name">
+    <span class="eyebrow" aria-hidden="true">Personal Portfolio</span>
+    <h1 id="hero-name">ABDUL QAYUM AKINDELE</h1>
+    <h2>{site.identity}</h2>
+    <p>«{site.hero}»</p>
+    <div class="actions">
+      <a class="btn primary" href="/projects">Explore</a>
+      <a class="btn" href="/about">About Me</a>
+    </div>
+  </section>
+
+  <!-- 2. CURRENTLY FOCUSED ON (single heading — no duplicate) -->
+  <section class="section" aria-labelledby="focus-heading">
+    <div class="wrap">
+      <h2 class="section-title" id="focus-heading">Currently Focused On</h2>
+      <p class="section-lead">Learning by building, researching, documenting, and sharing.</p>
+      <ul class="focus-list" role="list" aria-label="Current focus areas">
+        {focus.map(item => <li class="focus-item">{item}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <!-- 3. FEATURED PROJECT -->
+  <section class="section" aria-labelledby="featured-project-heading">
+    <div class="wrap">
+      <div class="featured-card">
+        <div class="featured-badge" aria-hidden="true">★ Featured Project</div>
+        <span class="tag" aria-hidden="true">Technology · Cybersecurity · Education</span>
+        <h2 id="featured-project-heading" style="font-size:clamp(1.8rem,4vw,3rem);margin:12px 0 16px;font-weight:900;letter-spacing:.02em;">
+          OFF_LIMIT TECH
+        </h2>
+        <p style="max-width:580px;color:#c8ccd5;margin-bottom:28px;font-size:1.05rem;">
+          A technology education brand making cybersecurity and technology easier to understand — one concept at a time.
+          Covering cybersecurity, AI, networking, privacy, and online safety.
+        </p>
+        <a class="btn primary" href="/off-limit-tech" target="_blank" rel="noopener noreferrer">
+          Visit OFF_LIMIT TECH ↗
+          <span class="sr-only">(opens in new tab)</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. FEATURED WRITING -->
+  <section class="section" aria-labelledby="writing-heading">
+    <div class="wrap">
+      <h2 class="section-title" id="writing-heading">Featured Writing</h2>
+      <p class="section-lead">Ideas, explanations, and lessons I've documented through my journey in technology.</p>
+      <ul class="grid-3" role="list" style="padding:0;list-style:none;">
+        {writings.map(w => (
+          <li>
+            <article class="card">
+              <span class="tag">{w.type}</span>
+              <h3 style="margin-top:10px;">{w.title}</h3>
+              <p class="muted" style="font-size:.9rem;margin:8px 0 0;">{w.description}</p>
+              <div class="card-meta">
+                <span class="card-date">{w.platform}</span>
+                {w.status === 'Coming Soon'
+                  ? <span class="status coming-soon" role="status">Coming Soon — {w.date}</span>
+                  : <a class="card-link" href={w.url} target="_blank" rel="noopener noreferrer">
+                      Read Article →<span class="sr-only"> — {w.title} (opens in new tab)</span>
+                    </a>
+                }
+              </div>
+            </article>
+          </li>
+        ))}
+      </ul>
+      <p style="margin-top:28px;">
+        <a href="/writing" style="color:#65a8ff;">View All Writing →</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- 5. FEATURED QUOTE -->
+  <section class="section" aria-labelledby="quote-heading">
+    <div class="wrap">
+      <h2 class="section-title" id="quote-heading">Featured Thought</h2>
+      <figure>
+        <blockquote class="quote-block large" style="margin-top:20px;">
+          "{quote}"
+        </blockquote>
+        <figcaption style="margin-top:14px;color:#656d7c;font-size:.88rem;">— Abdul Qayum Akindele</figcaption>
+      </figure>
+      <p style="margin-top:24px;">
+        <a href="/quotes" style="color:#65a8ff;">View Quotes &amp; Thoughts →</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- 6. CURRENTLY BUILDING -->
+  <section class="section" aria-labelledby="building-heading">
+    <div class="wrap">
+      <h2 class="section-title" id="building-heading">Currently Building</h2>
+      <p style="font-size:1.1rem;color:#9ca3b1;margin-bottom:28px;font-style:italic;">
+        Learning. Building. Documenting. Growing.
+      </p>
+      <ul class="grid-2" role="list" style="padding:0;list-style:none;">
+        {building.map(item => (
+          <li>
+            <div class="card">
+              <h3>{item.title}</h3>
+              <p class="muted" style="font-size:.92rem;margin-top:6px;">{item.description}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+      <p class="muted" style="margin-top:24px;">
+        My goal is to keep developing real understanding through consistent learning and practical work.
+      </p>
+    </div>
+  </section>
+
+  <!-- 7. ABOUT PREVIEW -->
+  <section class="section" aria-labelledby="about-preview-heading">
+    <div class="wrap split">
+      <div>
+        <span class="tag" aria-hidden="true">About Me</span>
+        <h2 class="section-title" id="about-preview-heading" style="margin-top:10px;">About Me</h2>
+        <p style="color:#c8ccd5;margin:12px 0 20px;font-size:1.02rem;line-height:1.7;">
+          I'm Abdul Qayum Akindele, a learner interested in cybersecurity, technology, Python, ethical hacking, and digital creation.
+          My journey is focused on building real understanding rather than simply collecting titles.
+        </p>
+        <div class="journey-path" style="margin-bottom:24px;" aria-label="Journey: Learning to Building to Sharing">
+          <span class="journey-step">Learning</span>
+          <span class="journey-arrow" aria-hidden="true">→</span>
+          <span class="journey-step">Building</span>
+          <span class="journey-arrow" aria-hidden="true">→</span>
+          <span class="journey-step">Sharing</span>
+        </div>
+        <a class="btn primary" href="/about">Read More About Me →</a>
+      </div>
+      <img
+        src="/images/photo.png"
+        alt="Abdul Qayum Akindele"
+        style="width:100%;border-radius:18px;object-fit:cover;object-position:top;display:block;border:1px solid rgba(255,255,255,.08);max-height:400px;"
+      />
+    </div>
+  </section>
+
+  <!-- 8. FINAL CTA -->
+  <section class="section" aria-labelledby="cta-heading">
+    <div class="wrap" style="text-align:center;">
+      <span class="tag" aria-hidden="true">Let's Connect</span>
+      <h2 class="section-title" id="cta-heading" style="margin-top:10px;">Let's Connect</h2>
+      <p class="muted" style="max-width:520px;margin:12px auto 28px;font-size:1.05rem;">
+        Have an opportunity, collaboration idea, or simply want to connect?<br/>
+        I'd be glad to hear from you.
+      </p>
+      <div class="actions" style="justify-content:center;">
+        <a class="btn primary" href="/contact">Contact Me</a>
+        <a class="btn" href="https://www.linkedin.com/in/abdul-qayum-akindele-bb33573a3" target="_blank" rel="noopener noreferrer">
+          LinkedIn ↗<span class="sr-only"> (opens in new tab)</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+<Footer/>
+</Layout>

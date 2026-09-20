@@ -1,0 +1,282 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import { olt } from '../data/content.js';
+---
+<Layout title="OFF_LIMIT TECH | Breaking the Limits. Building the Future.">
+<Header/>
+<main id="main-content">
+
+  <!-- OLT HERO -->
+  <section class="olt-hero" aria-labelledby="olt-hero-heading">
+    <div class="wrap">
+
+      <!-- LOGO PLACEHOLDER -->
+      <div
+        class="olt-logo-placeholder"
+        role="img"
+        aria-label="OFF_LIMIT TECH logo — will be added"
+      >
+        OLT
+      </div>
+
+      <span class="tag" aria-hidden="true">Technology Education Brand</span>
+      <h1 class="olt-title" id="olt-hero-heading" style="margin-top:12px;">OFF_LIMIT TECH</h1>
+      <p style="font-size:clamp(.95rem,1.8vw,1.25rem);color:#9ca3b1;margin:6px 0 10px;">
+        Cybersecurity Learner · AI Learner · Technical Writer · Technology Enthusiast
+      </p>
+      <p style="font-size:.92rem;color:#65a8ff;margin-bottom:6px;">Founded by Abdul Qayum Akindele</p>
+      <p style="font-size:1.6rem;font-weight:800;letter-spacing:.04em;color:#c8ccd5;margin:8px 0 4px;">
+        {olt.tagline}
+      </p>
+      <p style="font-size:1.1rem;font-style:italic;color:#e8eaf0;margin:10px 0 28px;max-width:600px;">
+        «{olt.mission}»
+      </p>
+      <div class="actions">
+        <a class="btn primary" href="#olt-content">Explore</a>
+        <a class="btn" href="#olt-contact">Contact</a>
+      </div>
+
+      <!-- STATS -->
+      <div class="olt-stats" style="margin-top:40px;" aria-label="OFF_LIMIT TECH achievements">
+        <div class="olt-stat">
+          <p class="olt-stat-num" aria-label={`${olt.stats.videos} videos`}>{olt.stats.videos}</p>
+          <p class="olt-stat-label">Videos</p>
+        </div>
+        <div class="olt-stat">
+          <p class="olt-stat-num" aria-label={`${olt.stats.articles} published articles`}>{olt.stats.articles}</p>
+          <p class="olt-stat-label">Published Articles</p>
+        </div>
+        <div class="olt-stat">
+          <p class="olt-stat-num" aria-label={`${olt.stats.subscribers} subscribers`}>{olt.stats.subscribers}</p>
+          <p class="olt-stat-label">Subscribers</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT IS OFF_LIMIT TECH -->
+  <section class="section" id="olt-content" aria-labelledby="olt-about-heading">
+    <div class="wrap">
+      <span class="tag" aria-hidden="true">About the Brand</span>
+      <h2 class="section-title" id="olt-about-heading" style="margin-top:12px;">What is OFF_LIMIT TECH?</h2>
+      <div class="split" style="margin-top:28px;">
+        <div>
+          <p style="color:#c8ccd5;line-height:1.75;font-size:1.02rem;margin-bottom:18px;">
+            OFF_LIMIT TECH is a technology education brand dedicated to making cybersecurity,
+            AI, and technology concepts accessible to everyone — especially beginners and people
+            who want to understand the digital world around them.
+          </p>
+          <p style="color:#c8ccd5;line-height:1.75;font-size:1.02rem;">
+            Through articles, videos, and educational content, OFF_LIMIT TECH breaks down
+            complex concepts into clear, honest explanations — without the jargon, without the
+            overwhelm.
+          </p>
+        </div>
+        <div>
+          <div style="padding:24px;border:1px solid rgba(22,113,255,.25);border-radius:14px;background:rgba(22,113,255,.05);">
+            <p class="muted" style="font-size:.82rem;text-transform:uppercase;letter-spacing:.06em;font-weight:600;margin-bottom:12px;">Who It's For</p>
+            <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">
+              {[
+                'People who want to understand technology and cybersecurity',
+                'Students learning about the digital world',
+                'Employers and collaborators who want to understand what OFF_LIMIT TECH represents',
+              ].map(item => (
+                <li style="display:flex;align-items:flex-start;gap:10px;font-size:.93rem;color:#c8ccd5;">
+                  <span style="color:#267fff;margin-top:2px;" aria-hidden="true">→</span>{item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT IT COVERS -->
+  <section class="section" aria-labelledby="olt-coverage-heading">
+    <div class="wrap">
+      <span class="tag" aria-hidden="true">Coverage</span>
+      <h2 class="section-title" id="olt-coverage-heading" style="margin-top:12px;">What OFF_LIMIT TECH Covers</h2>
+      <ul class="olt-coverage" style="margin-top:28px;list-style:none;padding:0;" aria-label="Topics covered">
+        {olt.coverage.map(topic => (
+          <li class="olt-coverage-item">🔐&nbsp;&nbsp;{topic}</li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- FEATURED VIDEOS -->
+  <section class="section" aria-labelledby="olt-videos-heading">
+    <div class="wrap">
+      <span class="tag" aria-hidden="true">YouTube</span>
+      <h2 class="section-title" id="olt-videos-heading" style="margin-top:12px;">Featured Videos</h2>
+      <p class="section-lead">Cybersecurity and technology concepts explained clearly.</p>
+      <div class="olt-video-grid">
+        {olt.videos.map(video => (
+          <a
+            href={video.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="olt-video-card"
+            aria-label={`Watch on YouTube: ${video.title} (opens in new tab)`}
+          >
+            <div class="olt-video-thumb" aria-hidden="true">▶</div>
+            <div class="olt-video-info">
+              <span class="tag" aria-hidden="true">YouTube</span>
+              <h3 style="font-size:.95rem;margin-top:8px;">{video.title}</h3>
+              <p style="font-size:.82rem;color:#65a8ff;margin-top:8px;" aria-hidden="true">Watch →</p>
+            </div>
+          </a>
+        ))}
+      </div>
+      <p style="margin-top:20px;">
+        <a
+          href="https://www.youtube.com/@Off_Limit001"
+          target="_blank"
+          rel="noopener noreferrer"
+          style="color:#65a8ff;"
+        >
+          View All Videos on YouTube ↗<span class="sr-only"> (opens in new tab)</span>
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <!-- PUBLISHED ARTICLES -->
+  <section class="section" aria-labelledby="olt-articles-heading">
+    <div class="wrap">
+      <span class="tag" aria-hidden="true">Technical Writing</span>
+      <h2 class="section-title" id="olt-articles-heading" style="margin-top:12px;">Published Articles</h2>
+      <p class="section-lead">In-depth technical articles published on Dev.to.</p>
+      <ul class="grid-2" style="margin-top:28px;list-style:none;padding:0;">
+        {olt.articles.map(article => (
+          <li>
+            <article class="card">
+              <span class="tag">Technical Writing · Dev.to</span>
+              <h3 style="margin-top:10px;">{article.title}</h3>
+              <p class="muted" style="font-size:.9rem;margin:10px 0 16px;">{article.description}</p>
+              <a
+                class="btn"
+                href={article.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                style="font-size:.88rem;padding:8px 16px;"
+              >
+                Read Article →<span class="sr-only"> — {article.title} (opens in new tab)</span>
+              </a>
+            </article>
+          </li>
+        ))}
+      </ul>
+      <p style="margin-top:20px;">
+        <a
+          href="https://dev.to/off_limit001"
+          target="_blank"
+          rel="noopener noreferrer"
+          style="color:#65a8ff;"
+        >
+          View All Articles on Dev.to ↗<span class="sr-only"> (opens in new tab)</span>
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <!-- MISSION -->
+  <section class="section" aria-labelledby="olt-mission-heading">
+    <div class="wrap" style="text-align:center;">
+      <span class="tag" aria-hidden="true">Mission</span>
+      <h2 class="section-title" id="olt-mission-heading" style="margin-top:12px;">Why OFF_LIMIT TECH?</h2>
+      <p style="max-width:680px;margin:20px auto;color:#c8ccd5;line-height:1.75;font-size:1.05rem;">
+        Technology and cybersecurity can feel distant, complicated, or inaccessible.
+        OFF_LIMIT TECH exists to close that gap — making these subjects understandable,
+        approachable, and useful for anyone who wants to learn.
+      </p>
+      <blockquote style="font-size:1.3rem;font-style:italic;color:#e8eaf0;margin:28px auto;max-width:600px;">
+        «{olt.mission}»
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- SOCIAL -->
+  <section class="section" aria-labelledby="olt-social-heading">
+    <div class="wrap">
+      <span class="tag" aria-hidden="true">Find OFF_LIMIT TECH</span>
+      <h2 class="section-title" id="olt-social-heading" style="margin-top:12px;">Follow &amp; Connect</h2>
+      <nav class="olt-social-grid" style="margin-top:28px;" aria-label="OFF_LIMIT TECH social media profiles">
+        {olt.social.map(s => (
+          <a
+            href={s.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="olt-social-item"
+            aria-label={`${s.name} (opens in new tab)`}
+          >
+            <div style="font-size:1.4rem;margin-bottom:8px;" aria-hidden="true">{s.icon}</div>
+            <p style="font-size:.88rem;font-weight:600;color:#e8eaf0;">{s.name}</p>
+            <p style="font-size:.78rem;color:#65a8ff;margin-top:4px;" aria-hidden="true">Follow ↗</p>
+          </a>
+        ))}
+      </nav>
+    </div>
+  </section>
+
+  <!-- OLT CONTACT -->
+  <section class="section" id="olt-contact" aria-labelledby="olt-contact-heading">
+    <div class="wrap">
+      <span class="tag" aria-hidden="true">OFF_LIMIT TECH</span>
+      <h2 class="section-title" id="olt-contact-heading" style="margin-top:12px;">Contact OFF_LIMIT TECH</h2>
+      <p class="muted" style="max-width:540px;margin:12px 0 28px;">
+        For collaboration, work opportunities, partnerships, sponsorships, or brand inquiries related to OFF_LIMIT TECH.
+      </p>
+      <div class="grid-2" style="max-width:600px;">
+        <div class="card">
+          <span class="tag">Email</span>
+          <p style="margin-top:10px;font-size:1rem;color:#e8eaf0;">
+            <a href={`mailto:${olt.email}`} style="color:#65a8ff;">{olt.email}</a>
+          </p>
+          <ul style="list-style:none;margin-top:14px;display:flex;flex-direction:column;gap:6px;">
+            {olt.contactPurpose.map(item => (
+              <li style="font-size:.85rem;color:#9ca3b1;display:flex;align-items:center;gap:8px;">
+                <span style="color:#267fff;font-size:.7rem;" aria-hidden="true">●</span>{item}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tag">Phone</span>
+          <p style="margin-top:10px;font-size:1rem;color:#e8eaf0;">
+            <a href={`tel:${olt.phone}`} style="color:#65a8ff;">{olt.phone}</a>
+          </p>
+          <p class="muted" style="font-size:.85rem;margin-top:8px;">Calls and SMS for OFF_LIMIT TECH inquiries.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- OLT Footer — separate from personal footer -->
+<footer style="border-top:1px solid rgba(22,113,255,.2);background:rgba(4,6,8,.98);">
+  <div style="width:min(1120px,90%);margin:auto;padding:40px 0 60px;display:grid;gap:16px;color:#9ca3b1;">
+    <div>
+      <strong style="color:#fff;font-size:1.05rem;font-weight:800;letter-spacing:.04em;">OFF_LIMIT TECH</strong>
+      <p style="font-size:.88rem;margin-top:4px;">{olt.tagline}</p>
+    </div>
+    <nav style="display:flex;flex-wrap:wrap;gap:18px;" aria-label="OFF_LIMIT TECH footer links">
+      {olt.footerSocial.map(([name, url]) => (
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          style="color:#9ca3b1;transition:color .2s;"
+          class="footer-links"
+        >
+          {name} ↗<span class="sr-only"> (opens in new tab)</span>
+        </a>
+      ))}
+    </nav>
+    <small style="color:#656d7c;">© 2026 OFF_LIMIT TECH · Founded by Abdul Qayum Akindele</small>
+  </div>
+</footer>
+</Layout>

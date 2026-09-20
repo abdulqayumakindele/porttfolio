@@ -1,0 +1,23 @@
+---
+import { site } from '../data/content.js';
+---
+<footer>
+  <div>
+    <strong style="color:#fff;font-size:1.05rem;">Abdul Qayum Akindele</strong>
+    <p style="font-size:.88rem;margin-top:4px;">{site.identity}</p>
+  </div>
+  <nav class="footer-links" aria-label="Footer navigation">
+    <a href="/about">About</a>
+    <a href="/qualifications">Qualifications</a>
+    <a href="/projects">Projects</a>
+    <a href="/writing">Writing</a>
+    <a href="/quotes">Quotes & Thoughts</a>
+    <a href="/contact">Contact</a>
+  </nav>
+  <div class="footer-links">
+    {site.social.map(([name, url]) => (
+      <a href={url} target="_blank" rel="noopener noreferrer">{name} ↗</a>
+    ))}
+  </div>
+  <small>© 2026 Abdul Qayum Akindele</small>
+</footer>

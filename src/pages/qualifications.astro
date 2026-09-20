@@ -1,0 +1,158 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { qualifications } from '../data/content.js';
+
+const statusClass = (s) => {
+  if (s === 'Completed' || s === 'Earned') return 'completed';
+  if (s === 'In Progress') return 'in-progress';
+  return 'coming-soon';
+};
+
+// Group certifications by provider
+const certsByProvider = qualifications.certifications.reduce((acc, cert) => {
+  if (!acc[cert.provider]) acc[cert.provider] = [];
+  acc[cert.provider].push(cert);
+  return acc;
+}, {});
+---
+<Layout title="Qualifications | Abdul Qayum Akindele">
+<Header/>
+<main id="main-content">
+
+  <div class="wrap page-header">
+    <span class="tag" aria-hidden="true">Background</span>
+    <h1 class="page-title" style="margin-top:12px;">Qualifications</h1>
+    <p class="page-subtitle">What I have formally learned or earned. Projects and Writing demonstrate what I do with that knowledge.</p>
+  </div>
+
+  <!-- EDUCATION -->
+  <section class="section" aria-labelledby="education-heading">
+    <div class="wrap">
+      <span class="tag" aria-hidden="true">Education</span>
+      <h2 class="section-title" id="education-heading" style="margin-top:12px;">Education</h2>
+      <div style="margin-top:28px;">
+        {qualifications.education.map(entry => (
+          <div class="qual-entry">
+            <div class="qual-entry-left">
+              <h3 class="qual-title">{entry.title}</h3>
+              <p class="qual-provider">{entry.provider}</p>
+              <p class="qual-date">{entry.date}</p>
+            </div>
+            <span class={`status ${statusClass(entry.status)}`}>{entry.status}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- TECHNICAL LEARNING -->
+  <section class="section" aria-labelledby="tech-learning-heading">
+    <div class="wrap">
+      <span class="tag" aria-hidden="true">Technical Learning</span>
+      <h2 class="section-title" id="tech-learning-heading" style="margin-top:12px;">Technical Learning</h2>
+      <p class="muted" style="margin-bottom:28px;">Courses and programs I am enrolled in or have completed as part of my self-directed learning journey.</p>
+      <div>
+        {qualifications.technicalLearning.map(entry => (
+          <div class="qual-entry">
+            <div class="qual-entry-left">
+              <h3 class="qual-title">{entry.title}</h3>
+              <p class="qual-provider">{entry.provider}</p>
+              <p class="qual-date">{entry.date}</p>
+              {entry.url && (
+                <a href={entry.url} target="_blank" rel="noopener noreferrer" style="font-size:.85rem;color:#65a8ff;margin-top:8px;display:inline-block;">
+                  View Course ↗
+                </a>
+              )}
+            </div>
+            <span class={`status ${statusClass(entry.status)}`}>{entry.status}</span>
+          </div>
+        ))}
+      </div>
+      <div class="placeholder-box" style="margin-top:10px;">
+        More technical learning and course completions will be added here as they are earned.
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS & CREDENTIALS -->
+  <section class="section" aria-labelledby="certs-heading">
+    <div class="wrap">
+      <span class="tag" aria-hidden="true">Credentials</span>
+      <h2 class="section-title" id="certs-heading" style="margin-top:12px;">Certifications &amp; Credentials</h2>
+      <p class="muted" style="margin-bottom:32px;">Formal credentials earned through learning programs and assessments.</p>
+
+      {Object.entries(certsByProvider).map(([provider, certs]) => (
+        <div style="margin-bottom:40px;">
+          <h3 style="font-size:.82rem;text-transform:uppercase;letter-spacing:.08em;color:#65a8ff;font-weight:700;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid rgba(22,113,255,.2);">
+            {provider}
+          </h3>
+          {certs.map(cert => (
+            <div class="qual-entry">
+              <div class="qual-entry-left">
+                <h4 class="qual-title">{cert.title}</h4>
+                <p class="qual-provider">{cert.provider}</p>
+                <p class="qual-date">{cert.date}</p>
+                {cert.url && (
+                  <a
+                    href={cert.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn"
+                    style="font-size:.82rem;padding:6px 14px;margin-top:12px;display:inline-flex;"
+                    aria-label={`View credential for ${cert.title}`}
+                  >
+                    View Credential ↗
+                  </a>
+                )}
+              </div>
+              <span class={`status ${statusClass(cert.status)}`}>{cert.status}</span>
+            </div>
+          ))}
+        </div>
+      ))}
+
+      {qualifications.certifications.length === 0 && (
+        <div class="placeholder-box" style="text-align:center;">
+          <div style="font-size:1.5rem;margin-bottom:10px;" aria-hidden="true">🏅</div>
+          Certifications will appear here as they are earned.
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- PROFESSIONAL DEVELOPMENT -->
+  <section class="section" aria-labelledby="prof-dev-heading">
+    <div class="wrap">
+      <span class="tag" aria-hidden="true">Ongoing Development</span>
+      <h2 class="section-title" id="prof-dev-heading" style="margin-top:12px;">Professional Development</h2>
+      <ul class="grid-2" role="list" style="margin-top:28px;padding:0;list-style:none;">
+        {qualifications.professionalDevelopment.map(item => (
+          <li>
+            <div class="card">
+              <span class="tag">{item.tag}</span>
+              <h3 style="margin-top:10px;">{item.title}</h3>
+              <p class="muted" style="font-size:.9rem;margin-top:6px;">{item.description}</p>
+              <span class={`status ${statusClass(item.status)}`} style="margin-top:14px;display:inline-flex;">{item.status}</span>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+</main>
+<Footer/>
+</Layout>
+
+<style>
+  .qual-title { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+  .placeholder-box {
+    border: 1px dashed rgba(255,255,255,.12);
+    border-radius: 10px;
+    padding: 20px 24px;
+    color: #656d7c;
+    font-size: .9rem;
+  }
+</style>
