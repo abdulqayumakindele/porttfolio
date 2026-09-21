@@ -231,7 +231,21 @@ export const qualifications = {
 
   technicalLearning: [
     {
+      title: 'Introduction to Cybersecurity',
+      provider: 'Cisco Networking Academy (NetAcad)',
+      date: 'Completed',
+      status: 'Completed',
+      url: '',
+    },
+    {
       title: 'Ethical Hacker',
+      provider: 'Cisco Networking Academy (NetAcad)',
+      date: 'Completed',
+      status: 'Completed',
+      url: '',
+    },
+    {
+      title: 'Python Essentials 1',
       provider: 'Cisco Networking Academy (NetAcad)',
       date: 'In Progress',
       status: 'In Progress',
@@ -327,7 +341,7 @@ export const olt = {
   stats: {
     videos: '5+',
     articles: 2,
-    subscribers: 29,
+    subscribers: 30,
   },
   videos: [
     { title: 'What is a VPN?',              url: 'https://youtu.be/7U-eCbDWXLc' },
