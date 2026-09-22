@@ -1,6 +1,6 @@
 Abdul Qayum Akindele — Personal Portfolio
 
-«Cybersecurity Learner · AI Learner · Technical Writer · Content Creator · Technology Enthusiast»
+Cybersecurity Learner · AI Learner · Technical Writer · Content Creator · Technology Enthusiast
 
 This repository contains the source code for my personal portfolio website.
 
@@ -723,4 +723,4 @@ Project Philosophy
 
 Learning. Building. Documenting. Growing.
 
-«Breaking the Limits. Building the Future.»
+Breaking the Limits. Building the Future.
