@@ -4,279 +4,553 @@ Abdul Qayum Akindele — Personal Portfolio
 
 This repository contains the source code for my personal portfolio website.
 
-The portfolio brings together my learning journey, qualifications, projects, technical writing, and thoughts as I continue developing my skills in cybersecurity, technology, Python, AI, and web development.
-
-🌐 Live Website: "abdulqayum.netlify.app" (https://abdulqayum.netlify.app)
-💻 Repository: "github.com/abdulqayumakindele/portfolio" (https://github.com/abdulqayumakindele/portfolio)
+The portfolio presents my learning journey, qualifications, projects, technical writing, personal thoughts, and ongoing development across cybersecurity, AI, Python, web development, and technology.
 
 ---
 
 About the Project
 
-I built this portfolio to create a central place where people can learn about me, explore my work, view my qualifications, and follow my progress in technology.
+I built this portfolio as a central place to document what I am learning, building, researching, and sharing.
 
-Rather than presenting only a list of skills, the website is designed to document the things I am learning, building, writing, and exploring.
+The project is also part of my practical web-development journey. It was built with Astro, HTML, CSS, and JavaScript, with the source code maintained in GitHub.
 
-The project also serves as a practical example of my development journey with Astro, JavaScript, HTML, CSS, Git, and GitHub.
+The portfolio is structured around several areas of my work and development:
+
+- Cybersecurity and ethical hacking
+- AI and technology
+- Python and development
+- Web development
+- Research and analysis
+- Technical writing
+- Technology content creation
 
 ---
 
 Features
 
-The portfolio currently includes:
+The current website includes:
 
-- Home — Introduction and overview
-- About — Background, interests, and professional direction
-- Qualifications — Certifications and credentials
-- Projects — Selected technology and cybersecurity-related projects
-- Writing — Technical writing and published work
-- Quotes & Thoughts — Personal reflections and ideas
-- Contact — Contact form and social profiles
-- Responsive navigation — Desktop and mobile navigation
-- Responsive layout — Designed for different screen sizes
-- External social links — Links to professional and social platforms
-- Accessibility considerations — Semantic navigation, labels, hidden headings, and screen-reader text
+- Personal homepage
+- About page
+- Qualifications and credentials
+- Projects section
+- Technical and personal writing
+- Quotes and thoughts
+- Personal contact page
+- Personal social profiles
+- OFF_LIMIT TECH project page
+- Responsive desktop and mobile navigation
+- Active navigation state
+- Project category filtering
+- Writing category tabs
+- Quote category filtering
+- Responsive layouts
+- Accessibility-focused markup and focus states
+- External links that open safely in new tabs
+- Professional profile image
+- Structured content managed from a central JavaScript data file
 
 ---
 
 Tech Stack
 
 Technology| Purpose
-Astro| Static site framework and page generation
-JavaScript| Interactive browser-side functionality and data
-HTML| Page structure and semantic markup
-CSS| Styling, layout, responsiveness, and visual design
+Astro 7.3.2| Website framework and page generation
+JavaScript| Content data and client-side interactions
+HTML| Semantic page structure
+CSS| Layout, styling, responsiveness, and accessibility states
 Git| Version control
-GitHub| Source-code hosting and project management
-Netlify| Website deployment
+GitHub| Source-code hosting
 
-The current "package.json" keeps the project intentionally lightweight, with Astro as its main dependency.
+The current "package.json" declares Astro as the project's only direct dependency.
 
 ---
 
 Project Structure
 
 portfolio/
-├── public/
-│   └── static assets
-│
-├── src/
-│   ├── components/
-│   │   ├── Footer.astro
-│   │   └── Header.astro
-│   │
-│   ├── data/
-│   │   └── content.js
-│   │
-│   ├── layouts/
-│   │   └── Layout.astro
-│   │
-│   ├── pages/
-│   │   ├── index.astro
-│   │   ├── about.astro
-│   │   ├── qualifications.astro
-│   │   ├── projects.astro
-│   │   ├── writing.astro
-│   │   ├── quotes.astro
-│   │   ├── contact.astro
-│   │   └── off-limit-tech.astro
-│   │
-│   └── styles/
-│       └── global.css
-│
 ├── .gitignore
+├── .vscode/
+│   ├── extensions.json
+│   └── launch.json
+│
+├── AGENTS.md
+├── CLAUDE.md
+├── README.md
+├── astro.config.mjs
+├── package-lock.json
 ├── package.json
-└── README.md
+├── tsconfig.json
+│
+├── public/
+│   ├── assets/
+│   │   └── README.md
+│   │
+│   ├── favicon.ico
+│   ├── favicon.svg
+│   │
+│   └── images/
+│       ├── README.md
+│       └── photo.png
+│
+└── src/
+    ├── components/
+    │   ├── Footer.astro
+    │   └── Header.astro
+    │
+    ├── data/
+    │   └── content.js
+    │
+    ├── layouts/
+    │   └── Layout.astro
+    │
+    ├── pages/
+    │   ├── index.astro
+    │   ├── about.astro
+    │   ├── qualifications.astro
+    │   ├── projects.astro
+    │   ├── writing.astro
+    │   ├── quotes.astro
+    │   ├── contact.astro
+    │   └── off-limit-tech.astro
+    │
+    └── styles/
+        └── global.css
 
-Main directories
+The tree above reflects the current "main" branch.
+
+---
+
+Directory and File Overview
 
 "src/pages/"
 
-Contains the website's pages.
+Contains the site's main Astro pages.
 
-Astro uses files inside "src/pages/" to create routes.
+File| Purpose
+"index.astro"| Homepage
+"about.astro"| Personal background, direction, values, and interests
+"qualifications.astro"| Education, technical learning, certifications, and professional development
+"projects.astro"| Projects with category filtering
+"writing.astro"| Technical and personal writing with tabs
+"quotes.astro"| Quotes and thoughts with category filtering
+"contact.astro"| Personal contact form and social profiles
+"off-limit-tech.astro"| OFF_LIMIT TECH project/brand page
 
-For example:
+The homepage includes the hero section, current focus areas, featured OFF_LIMIT TECH project, writing, featured thought, current building areas, About preview, and contact CTA.
 
-src/pages/about.astro
-
-becomes:
-
-/about
+---
 
 "src/components/"
 
-Contains reusable interface components.
+Contains reusable site-wide components.
 
-The current project includes:
+"Header.astro"
 
-- "Header.astro"
-- "Footer.astro"
+Provides:
 
-"src/layouts/"
+- Site branding
+- Desktop navigation
+- Mobile menu
+- Navigation links
 
-Contains the shared page layout.
+The main navigation currently contains:
 
-"Layout.astro" handles common elements such as:
+- Home
+- About
+- Qualifications
+- Projects
+- Writing
+- Quotes & Thoughts
+- Contact
 
-- Global CSS
-- HTML metadata
+"Footer.astro"
+
+Provides:
+
+- Personal identity
+- Footer navigation
+- Personal social links
+- Copyright information
+
+---
+
+"src/layouts/Layout.astro"
+
+Provides the shared HTML document structure.
+
+It currently handles:
+
+- Global stylesheet loading
 - Page titles
+- Meta description
 - Open Graph metadata
 - Twitter card metadata
-- Google Fonts
-- Shared client-side interactions
+- Google Fonts connection
+- Page slot rendering
+- Scroll-based header behavior
+- Mobile navigation behavior
+- Active navigation state
 
-"src/data/"
+The current canonical/Open Graph URL in the layout is:
 
-Contains reusable website content.
-
-The current project uses:
-
-src/data/content.js
-
-for structured content such as identity information and social/contact data.
-
-"src/styles/"
-
-Contains the global styling used throughout the website.
+https://abdulqayumakindele.com
 
 ---
 
-Page Routes
+"src/data/content.js"
 
-The current portfolio includes these main routes:
+This is the central content/data file for the portfolio.
 
-Route| Purpose
-"/"| Homepage
-"/about"| About me
-"/qualifications"| Qualifications and credentials
-"/projects"| Projects
-"/writing"| Technical writing
-"/quotes"| Quotes and thoughts
-"/contact"| Contact and social profiles
-"/off-limit-tech"| OFF_LIMIT TECH project
+It currently contains data for:
+
+- Site identity
+- Personal social profiles
+- Current focus areas
+- Current building areas
+- Writing
+- Quotes and thoughts
+- Projects
+- Qualifications
+- Certifications
+- Professional development
+- OFF_LIMIT TECH
+- About page content
+- Personal contact purposes
+
+This allows much of the site's content to be maintained separately from the page templates.
 
 ---
 
-Contact Form
+"src/styles/global.css"
 
-The contact page includes a simple contact form that uses the visitor's email client.
+Contains the site's global styling.
 
-The current implementation uses:
+The stylesheet includes:
+
+- Global reset
+- Typography
+- Dark visual theme
+- Blue accent system
+- Header and navigation
+- Mobile navigation
+- Buttons
+- Cards
+- Featured project cards
+- Responsive grids
+- Forms
+- Social links
+- Status badges
+- Filters
+- Tabs
+- Quotes
+- Values
+- Qualifications
+- OFF_LIMIT TECH sections
+- Responsive breakpoints
+- Keyboard focus styles
+
+The layout switches to mobile-oriented arrangements at "900px" and "700px" breakpoints.
+
+---
+
+Pages
+
+Home
+
+The homepage introduces Abdul Qayum Akindele and presents:
+
+- Professional identity
+- Current focus
+- Featured project
+- Featured writing
+- Featured thought
+- Current building areas
+- About preview
+- Contact CTA
+
+The homepage also displays the profile image stored at:
+
+public/images/photo.png
+
+---
+
+About
+
+The About page contains:
+
+- Introduction
+- Personal journey
+- Identity
+- Direction
+- Values
+- Interests beyond technology
+
+The page describes the long-term direction of becoming an ethical hacker and includes interests such as psychology, philosophy, nature, and exploring the world.
+
+---
+
+Qualifications
+
+The Qualifications page contains four major areas:
+
+1. Education
+2. Technical Learning
+3. Certifications & Credentials
+4. Professional Development
+
+Current credentials include Cisco and Anthropic certifications, with credential links where available.
+
+---
+
+Projects
+
+The Projects page includes category filtering for:
+
+- All
+- Technology
+- Cybersecurity
+- Development
+- Volunteer
+
+The current data contains:
+
+OFF_LIMIT TECH
+
+- Role: Founder
+- Status: In Progress
+- Category: Technology
+- Flagship project
+
+Personal Portfolio Website
+
+- Role: Developer
+- Status: In Progress
+- Category: Development
+
+The project page also contains a placeholder for additional future projects.
+
+---
+
+Writing
+
+The Writing page separates content into:
+
+- All
+- Technical Writing
+- Articles / Personal Writing
+
+Current writing data includes published Dev.to and Substack work as well as a future personal-writing entry marked Coming Soon.
+
+---
+
+Quotes & Thoughts
+
+The Quotes page provides categories for:
+
+- Life & Growth
+- Technology & Cybersecurity
+- Learning
+- Books & Ideas
+- Personal Thoughts
+
+It contains original thoughts, personal observations, book quotations, and personal writing.
+
+---
+
+Contact
+
+The personal Contact page contains:
+
+- Name field
+- Email field
+- Message field
+- Direct email link
+- Personal social profiles
+- Contact-purpose information
+- Separate pointer to OFF_LIMIT TECH contact information
+
+The form uses a "mailto:" action:
 
 <form action={`mailto:${site.email}`} method="get">
 
-This means the portfolio does not currently have a server-side contact API or database.
-
-Messages are not stored by the portfolio application.
-
-Visitors can also email directly using the displayed email address.
+Therefore, the current implementation relies on the visitor's email client rather than a server-side form-processing system.
 
 ---
 
-Authentication
+OFF_LIMIT TECH
 
-This portfolio currently does not implement user authentication.
+The portfolio contains a dedicated OFF_LIMIT TECH page.
 
-There are currently no:
+OFF_LIMIT TECH is presented as a technology education brand founded by Abdul Qayum Akindele.
 
-- User accounts
-- Login system
-- Registration system
-- Password authentication
-- Password hashing
-- JWT authentication
-- OAuth implementation
-- Authentication API
-- Session store
-- Protected routes
-- Authentication middleware
-- Bearer-token system
+Tagline
 
-The ".gitignore" file excludes environment files such as:
+«Breaking the Limits. Building the Future.»
 
-.env
-.env.production
+Mission
 
-This helps prevent environment-specific configuration from being committed accidentally, but environment files themselves are not an authentication system.
+«Making technology easier to understand, one concept at a time.»
+
+The page covers:
+
+- Cybersecurity
+- Artificial Intelligence
+- Computer Literacy
+- Networking
+- Internet Technology
+- Privacy
+- Online Safety
+- Technical Writing
+- Technology Education
+
+It also contains:
+
+- Featured videos
+- Published technical articles
+- Social profiles
+- Brand contact information
+- Collaboration and sponsorship information
 
 ---
 
-Client-Side Functionality
+Assets
 
-The portfolio contains a small amount of browser-side JavaScript in "Layout.astro".
+Profile Image
 
-Scroll header
+The repository currently contains:
 
-The header receives a "scrolled" class when the user scrolls more than 40 pixels.
+public/images/photo.png
 
-window.addEventListener('scroll', () => {
-  header.classList.toggle('scrolled', window.scrollY > 40);
-});
+This image is used on the homepage and About page.
 
-Mobile navigation
+Favicon
 
-The mobile menu can be opened and closed using JavaScript.
+The repository contains:
 
-Navigation links also close the mobile menu after selection.
+public/favicon.ico
+public/favicon.svg
 
-Active navigation
+OFF_LIMIT TECH Logo
 
-The current page is detected using "window.location" and the corresponding navigation link receives an "active" class.
+The repository currently has an "assets/README.md" explaining where the OFF_LIMIT TECH logo should be placed.
+
+The source page currently uses an OLT text placeholder, rather than an actual logo image.
+
+---
+
+Interactivity
+
+The portfolio uses client-side JavaScript for several interface features.
+
+Header
+
+The header changes appearance after scrolling and supports mobile navigation.
+
+Projects
+
+Users can filter projects by category without navigating to another page.
+
+Writing
+
+Users can switch between:
+
+- All
+- Technical Writing
+- Personal Writing
+
+using client-side tabs.
+
+Quotes
+
+Users can filter quotes and thoughts by category.
+
+---
+
+Accessibility
+
+The current implementation includes several accessibility-oriented features, including:
+
+- Semantic navigation
+- "aria-label"
+- "aria-labelledby"
+- "aria-pressed"
+- "aria-selected"
+- Screen-reader-only text
+- Visible keyboard focus states
+- Form labels
+- Descriptive image "alt" text
+- New-tab indicators for external links
+
+The global stylesheet also defines a visible ":focus-visible" outline for keyboard users.
 
 ---
 
 External Links
 
-External social links are opened in a new browser tab.
-
-The project uses:
+External links generally use:
 
 target="_blank"
 rel="noopener noreferrer"
 
-The "noopener noreferrer" attributes help prevent the newly opened page from accessing the original page through "window.opener".
+This is used throughout the portfolio for external social profiles, articles, videos, and other external resources.
 
 ---
 
-Security Considerations
+Authentication
 
-Security is an important part of how I approach technology.
+The current portfolio does not implement application-level authentication.
 
-The current portfolio is a relatively simple static website, which means its attack surface is smaller than that of an application with user accounts, databases, APIs, and server-side authentication.
+There is no authentication system for:
 
-Current practices include:
+- User accounts
+- Login
+- Registration
+- Passwords
+- Sessions
+- JWTs
+- OAuth
+- Protected routes
+- Authentication middleware
+- Bearer-token authentication
+- Authentication API
 
-- No authentication credentials are stored in the application.
-- Environment files are excluded from Git.
-- No passwords are collected.
-- No user accounts are created.
-- No authentication tokens are handled by the application.
-- External links opened in new tabs use "noopener noreferrer".
-- The project uses semantic HTML and accessibility attributes in several interface elements.
+The current "package.json" also does not declare an authentication dependency.
 
-Security is an ongoing learning process, and I intend to continue improving the project as I learn more about secure web development.
+This is consistent with the portfolio being a primarily static Astro website rather than an account-based web application.
 
 ---
 
-Getting Started
+Security
 
-Prerequisites
+The repository includes a ".gitignore" that excludes:
 
-You should have the following installed:
+dist/
+.astro/
+node_modules/
+*.log
+.env
+.env.production
+.DS_Store
+.idea/
+
+Environment files are therefore excluded from version control.
+
+The current application does not collect passwords or maintain user accounts.
+
+External links opened in new tabs use "noopener noreferrer", and the stylesheet includes keyboard-visible focus states.
+
+---
+
+Development
+
+Requirements
+
+You need:
 
 - Node.js
 - npm
 - Git
-
-Clone the repository
-
-git clone https://github.com/abdulqayumakindele/portfolio.git
-
-Move into the project directory:
-
-cd portfolio
 
 Install dependencies
 
@@ -286,96 +560,129 @@ Start the development server
 
 npm run dev
 
-The Astro development server will normally be available at:
+The repository's "package.json" defines the development command as:
 
-http://localhost:4321
+astro dev
 
-Build the project
+Build
 
 npm run build
 
-This creates the production build in:
+This runs:
 
-dist/
+astro build
 
-Preview the production build
+Preview
 
 npm run preview
 
+This runs:
+
+astro preview
+
 ---
 
-Development Workflow
+Development Instructions
 
-My development workflow currently involves:
+The repository contains "AGENTS.md", which provides instructions for development work.
 
-Idea
+It recommends starting the Astro development server in background mode:
+
+astro dev --background
+
+It also documents commands for managing the background server:
+
+astro dev stop
+astro dev status
+astro dev logs
+
+The same instructions are available through "CLAUDE.md", which currently points to the same development guidance.
+
+---
+
+VS Code
+
+The repository includes VS Code configuration.
+
+Recommended Extension
+
+The project recommends:
+
+astro-build.astro-vscode
+
+Development Launch Configuration
+
+The VS Code launch configuration starts:
+
+./node_modules/.bin/astro dev
+
+---
+
+TypeScript Configuration
+
+The repository contains "tsconfig.json".
+
+It extends Astro's strict configuration:
+
+{
+  "extends": "astro/tsconfigs/strict",
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist"]
+}
+
+---
+
+Astro Configuration
+
+The current "astro.config.mjs" contains the default Astro configuration:
+
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({});
+
+No additional Astro integrations are currently configured there.
+
+---
+
+Repository Workflow
+
+The project follows a simple development workflow:
+
+Plan
   ↓
-Design / Planning
+Build
   ↓
-Development
+Test locally
   ↓
-Local Testing
+Review
   ↓
 Git
   ↓
 GitHub
   ↓
-Deployment
-  ↓
-Review & Improvement
+Improve
 
-The portfolio is an ongoing project rather than a finished product.
-
-As I learn new technologies and improve my development skills, I plan to continue refining it.
+The repository is structured to make future projects, writing, qualifications, and other content easy to add through "src/data/content.js" and the existing page components.
 
 ---
 
-Deployment
+Current Status
 
-The production website is deployed through Netlify.
+Active Development
 
-🌐 Live Portfolio:
-https://abdulqayum.netlify.app
+The portfolio is an ongoing project.
 
-The source code is maintained in GitHub.
+Future work can include:
 
----
-
-Future Improvements
-
-Possible future improvements include:
-
-- Improved project documentation
-- Additional accessibility testing
-- Automated testing
-- Better performance monitoring
-- Improved SEO
-- More project case studies
+- Additional projects
+- More technical writing
+- More certifications and learning achievements
+- OFF_LIMIT TECH logo integration
+- Additional accessibility improvements
+- Performance improvements
+- More advanced web-development features
 - Additional cybersecurity projects
-- Better deployment documentation
-- Security-focused repository configuration
 - Further UI/UX improvements
-
-As the project grows, some documentation may eventually be moved into dedicated documentation files.
-
----
-
-Related Project — OFF_LIMIT TECH
-
-OFF_LIMIT TECH is my technology-focused project centered on making cybersecurity and technology easier to understand.
-
-Its focus includes:
-
-- Cybersecurity awareness
-- Computer literacy
-- Scam awareness
-- Beginner-friendly technology explanations
-- Technical learning
-- Technology content creation
-
-The portfolio contains a dedicated page for the project:
-
-/off-limit-tech
 
 ---
 
@@ -385,36 +692,35 @@ Abdul Qayum Akindele
 
 Cybersecurity Learner · AI Learner · Technical Writer · Content Creator · Technology Enthusiast
 
-I am currently developing my skills across cybersecurity, Python, AI, web development, technical writing, and technology communication.
+«I build, learn, research, and document my journey in cybersecurity and technology.»
 
-My goal is to keep learning, building, documenting what I learn, and using technology responsibly.
+My long-term direction is to become an ethical hacker and use technical knowledge responsibly to protect, educate, and help others.
 
 ---
 
-Connect With Me
+Connect
 
-- Portfolio: https://abdulqayum.netlify.app
 - GitHub: https://github.com/abdulqayumakindele
-- LinkedIn: https://www.linkedin.com/in/abdul-qayum-akindele-bb33573a3/
+- LinkedIn: https://www.linkedin.com/in/abdul-qayum-akindele-bb33573a3
+- TikTok: https://www.tiktok.com/@akindeleabdulqayum
+- Substack: https://substack.com/@offlimittech
+- Snapchat: https://www.snapchat.com/add/akindele.16
+- Facebook: https://www.facebook.com/share/18XMAV73NC/
 
-For other social profiles, visit the Contact page on the portfolio.
+The personal social profiles above are defined in the project's content data.
 
 ---
 
 License
 
-No license has currently been specified for this repository.
+No license file is currently present in the repository.
 
-If this project is intended to be reused, modified, or redistributed by others, an appropriate open-source license can be added later.
+Therefore, no open-source license is currently declared for the project.
 
 ---
 
-Status
+Project Philosophy
 
-Active Development
+Learning. Building. Documenting. Growing.
 
-This portfolio represents an ongoing learning and development project.
-
-«Breaking the limits. Building the future.
-:::»
-
+«Breaking the Limits. Building the Future.»
